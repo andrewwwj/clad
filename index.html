@@ -8,37 +8,51 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#">CLaD</a>
-      <nav class="nav">
-        <a href="#overview">Overview</a>
-        <a href="#method">Method</a>
-        <a href="#results">Results</a>
-<!--        <a href="#ablations">Ablations</a>-->
-        <a href="#citation">Citation</a>
-      </nav>
-    </div>
-  </header>
+<!--  <header class="site-header">-->
+<!--    <div class="container nav-wrap">-->
+<!--      <a class="brand" href="#">CLaD</a>-->
+<!--      <nav class="nav">-->
+<!--        <a href="#overview">Overview</a>-->
+<!--        <a href="#method">Method</a>-->
+<!--        <a href="#results">Results</a>-->
+<!--&lt;!&ndash;        <a href="#ablations">Ablations</a>&ndash;&gt;-->
+<!--        <a href="#citation">Citation</a>-->
+<!--      </nav>-->
+<!--    </div>-->
+<!--  </header>-->
+  <div class="top-banner">
+      <div class="banner-inner">
+        <a href="https://cvpr.thecvf.com/" target="_blank" rel="noopener noreferrer">
+          <img src="https://cvpr.thecvf.com/static/core/img/cvpr-navbar-logo.svg" alt="CVPR">
+        </a>
+        <nav class="nav">
+          <a href="#overview">Overview</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+  <!--        <a href="#ablations">Ablations</a>-->
+          <a href="#citation">Citation</a>
+        </nav>
+      </div>
+  </div>
 
   <main>
     <section class="hero">
       <div class="container">
-        <p class="eyebrow">Project Page</p>
+<!--        <p class="eyebrow">Project Page</p>-->
         <h1>CLaD: Planning with Grounded Foresight via Cross-Modal Latent Dynamics</h1>
         <p class="authors">
-          Andrew Jeong · Jaemin Kim · Sebin Lee · Sung-Eui Yoon
+          Andrew Jeong · Jaemin Kim · Sebin Lee · Sung-Eui Yoon*
         </p>
         <p class="affiliation">KAIST</p>
 
         <div class="button-row">
           <a class="button primary" href="assets/pdf/CLaD_CVPR_2026.pdf">Paper</a>
-          <a class="button" href="https://github.com/andrewwwj/clad">Code</a>
+          <a class="button" href="https://github.com">Code</a>
           <a class="button" href="#citation">BibTeX</a>
         </div>
 
         <p class="hero-summary">
-          Robotic manipulation involves kinematic and semantic transitions that are inherently coupled via underlying actions. However, existing approaches plan within either semantic or latent space without explicitly aligning these cross-modal transitions. To address this, we propose CLaD, a framework that models how proprioceptive and semantic states jointly evolve under actions through asymmetric cross-attention that allows kinematic transitions to query semantic ones. CLaD predicts grounded latent foresights via self-supervised objectives with EMA target encoders and auxiliary reconstruction losses, preventing representation collapse while anchoring predictions to observable states. Predicted foresights are modulated with observations to condition a diffusion pol- icy for action generation. On LIBERO-LONG benchmark, CLaD achieves 94.7% success rate, competitive with large VLAs with significantly fewer parameters.
+          Robotic manipulation involves kinematic and semantic transitions that are inherently coupled via underlying actions. However, existing approaches plan within either semantic or latent space without explicitly aligning these cross-modal transitions. To address this, we propose CLaD, a framework that models how proprioceptive and semantic states jointly evolve under actions through asymmetric cross-attention that allows kinematic transitions to query semantic ones. CLaD predicts grounded latent foresights via self-supervised objectives with EMA target encoders and auxiliary reconstruction losses, preventing representation collapse while anchoring predictions to observable states. Predicted foresights are modulated with observations to condition a diffusion policy for action generation. On LIBERO-LONG benchmark, CLaD achieves 94.7% success rate, competitive with large VLAs with significantly fewer parameters.
         </p>
 
 <!--        <div class="metrics-grid">-->

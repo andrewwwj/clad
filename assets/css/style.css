@@ -6,8 +6,7 @@
   --text:#172033;
   --muted:#5c677d;
   --border:#d9e0ee;
-  --accent:#2f6fed;
-  --accent-2:#7b61ff;
+  --accent:#0079CF;
   --shadow:0 14px 40px rgba(17, 24, 39, .08);
   --radius:18px;
   --container:1120px;
@@ -36,6 +35,37 @@ a{color:inherit;text-decoration:none}
   background:rgba(251,252,255,.85);
   border-bottom:1px solid rgba(217,224,238,.7);
 }
+
+.top-banner {
+  background: #1B427D;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px 0;
+}
+
+.top-banner .banner-inner{
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0px;
+}
+.top-banner .nav{
+  margin-left:auto;
+}
+.top-banner .nav a{
+  color:#fff;
+  font-weight:700;
+  font-size:1.05rem;
+  margin-right:auto;
+}
+
+.top-banner img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
 .nav-wrap{
   display:flex;
   align-items:center;
@@ -105,7 +135,7 @@ h1{
   cursor:pointer;
 }
 .button.primary{
-  background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  background:linear-gradient(135deg, #1B427D, #0079CF);
   color:white;
   border:none;
 }
