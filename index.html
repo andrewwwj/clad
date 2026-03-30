@@ -33,37 +33,37 @@
 
         <div class="button-row">
           <a class="button primary" href="assets/pdf/CLaD_CVPR_2026.pdf">Paper</a>
-          <a class="button" href="https://github.com/your-org/clad">Code</a>
+          <a class="button" href="https://github.com/andrewwwj/clad">Code</a>
           <a class="button" href="#citation">BibTeX</a>
         </div>
 
         <p class="hero-summary">
-          Robotic manipulation involves kinematic and semantic transitions that are inherently coupled via underlying actions. However, existing approaches either generate subgoal images or texts, or plan within latent spaces that lack cross-modal understanding. We propose CLaD (Cross-modal Latent Dynamics), a framework that models how proprioceptive and semantic states co-evolve under actions through asymmetric cross-attention that allows kinematic transitions to query semantic ones. CLaD predicts grounded latent foresights via a self-supervised objective with EMA target encoders and auxiliary reconstruction losses, preventing representation collapse while anchoring predictions to observable states. Predicted foresights are modulated with observations to condition a diffusion policy for action generation. On the LIBERO-LONG benchmark, CLaD achieves 94.7\% success rate, competitive with $\pi_{0.5}$ (3.3B) and OpenVLA (7B), with only 0.66B parameters.
+          Robotic manipulation involves kinematic and semantic transitions that are inherently coupled via underlying actions. However, existing approaches plan within either semantic or latent space without explicitly aligning these cross-modal transitions. To address this, we propose CLaD, a framework that models how proprioceptive and semantic states jointly evolve under actions through asymmetric cross-attention that allows kinematic transitions to query semantic ones. CLaD predicts grounded latent foresights via self-supervised objectives with EMA target encoders and auxiliary reconstruction losses, preventing representation collapse while anchoring predictions to observable states. Predicted foresights are modulated with observations to condition a diffusion pol- icy for action generation. On LIBERO-LONG benchmark, CLaD achieves 94.7% success rate, competitive with large VLAs with significantly fewer parameters.
         </p>
 
-        <div class="metrics-grid">
-          <article class="metric-card">
-            <div class="metric">94.7%</div>
-            <div class="metric-label">LIBERO-LONG average success rate</div>
-          </article>
-          <article class="metric-card">
-            <div class="metric">0.66B</div>
-            <div class="metric-label">Total parameters</div>
-          </article>
-          <article class="metric-card">
-            <div class="metric">25 Hz</div>
-            <div class="metric-label">Inference throughput</div>
-          </article>
-          <article class="metric-card">
-            <div class="metric">4 GB</div>
-            <div class="metric-label">Runtime memory</div>
-          </article>
-        </div>
+<!--        <div class="metrics-grid">-->
+<!--          <article class="metric-card">-->
+<!--            <div class="metric">94.7%</div>-->
+<!--            <div class="metric-label">LIBERO-LONG average success rate</div>-->
+<!--          </article>-->
+<!--          <article class="metric-card">-->
+<!--            <div class="metric">0.66B</div>-->
+<!--            <div class="metric-label">Total parameters</div>-->
+<!--          </article>-->
+<!--          <article class="metric-card">-->
+<!--            <div class="metric">25 Hz</div>-->
+<!--            <div class="metric-label">Inference throughput</div>-->
+<!--          </article>-->
+<!--          <article class="metric-card">-->
+<!--            <div class="metric">4 GB</div>-->
+<!--            <div class="metric-label">Runtime memory</div>-->
+<!--          </article>-->
+<!--        </div>-->
 
         <figure class="hero-figure">
-          <img src="assets/img/teaser-overview.png" alt="CLaD teaser overview" />
+          <img src="assets/img/CLaD_abstract.png" alt="CLaD teaser overview" />
           <figcaption>
-            Teaser figure from the paper. For the final project page, replace this crop with a clean exported figure from the source PDF.
+            Overview of CLaD. (a) Conventional approaches either generate semantic artifacts (e.g., subgoal images or texts), or plan in unimodal latent spaces that lack cross-modal understanding. (b) CLaD learns cross-modal latent dynamics to predict grounded latent foresights, which condition a diffusion policy for action generation. CLaD achieves 94.7% with only 0.66B parameters, competitive with OpenVLA (7B) and π<sub>0.5</sub> (3.3B).
           </figcaption>
         </figure>
       </div>
@@ -73,38 +73,35 @@
       <div class="container">
         <div class="section-heading">
           <p class="section-kicker">Overview</p>
-          <h2>What the page should emphasize</h2>
+          <h2>Core Contributions</h2>
         </div>
 
-        <div class="content narrow">
-          <p>
-            The strongest storyline for the project page is:
-            <strong>do not align static states; model how modalities change together under actions.</strong>
-            CLaD captures how semantic transitions and proprioceptive transitions co-evolve, converts the shared
-            dynamics into grounded latent foresight, and uses that foresight as an implicit subgoal for a diffusion policy.
-          </p>
-        </div>
+<!--        <div class="content narrow">-->
+<!--          <p>-->
+<!--            The strongest storyline for the project page is:-->
+<!--            <strong>do not align static states; model how modalities change together under actions.</strong>-->
+<!--            CLaD captures how semantic transitions and proprioceptive transitions co-evolve, converts the shared-->
+<!--            dynamics into grounded latent foresight, and uses that foresight as an implicit subgoal for a diffusion policy.-->
+<!--          </p>-->
+<!--        </div>-->
 
         <div class="card-grid three">
           <article class="info-card">
             <h3>1. Cross-Modal Latent Dynamics</h3>
             <p>
-              Learn transition-level correlations across modalities with asymmetric cross-attention, where
-              proprioceptive transitions query semantic transitions.
+              We propose a cross-modal dynamics model that learns how proprioceptive and semantic transitions jointly evolve under actions via asymmetric cross-attention, interpreting a semantic transition through a proprioceptive transition cue.
             </p>
           </article>
           <article class="info-card">
             <h3>2. Grounded Latent Foresight</h3>
             <p>
-              Predict future latent states with EMA targets and auxiliary reconstruction, so the foresight stays
-              anchored to observable semantic and proprioceptive quantities.
+              We introduce a two-stage training framework that predicts compact future latent states from the shared cross-modal dynamics, which are grounded to observable quantities, enabling them to serve as subgoals for diffusion-based control.
             </p>
           </article>
           <article class="info-card">
             <h3>3. Parameter-Efficient Planning</h3>
             <p>
-              Reach competitive long-horizon performance with a compact model instead of relying on large
-              semantic generators at inference time.
+              CLaD achieves competitive performance to OpenVLA (7B) and π0.5 (3.3B) on LIBERO-LONG with significantly fewer parameters (0.66B), demonstrating that grounded latent foresight enables efficient and scalable robot planning within a compact latent space.
             </p>
           </article>
         </div>
@@ -121,35 +118,35 @@
         <div class="two-col">
           <div>
             <figure class="paper-figure">
-              <img src="assets/img/method-architecture.png" alt="CLaD method architecture" />
-              <figcaption>Stage 1 learns cross-modal latent dynamics and grounded foresight; Stage 2 trains a foresight-conditioned diffusion policy.</figcaption>
+              <img src="assets/img/CLaD_method.png" alt="CLaD method architecture" />
+              <figcaption>1) Learn cross-modal latent dynamics and grounded foresight 2) Train a foresight-conditioned diffusion policy.</figcaption>
             </figure>
           </div>
-          <div class="sticky-col">
-            <div class="stack">
-              <article class="step-card">
-                <span class="step-index">Step 1</span>
-                <h3>Encode transitions</h3>
-                <p>
-                  Encode semantic state and proprioception, then extract transition embeddings from past state-action history.
-                </p>
-              </article>
-              <article class="step-card">
-                <span class="step-index">Step 2</span>
-                <h3>Fuse dynamics across modalities</h3>
-                <p>
-                  Use asymmetric cross-attention to turn transition embeddings into a shared cross-modal dynamics token.
-                </p>
-              </article>
-              <article class="step-card">
-                <span class="step-index">Step 3</span>
-                <h3>Predict foresight and act</h3>
-                <p>
-                  Predict future latent embeddings, modulate them with current observations, and condition a diffusion policy on the resulting foresight.
-                </p>
-              </article>
-            </div>
-          </div>
+<!--          <div class="sticky-col">-->
+<!--            <div class="stack">-->
+<!--              <article class="step-card">-->
+<!--                <span class="step-index">Step 1</span>-->
+<!--                <h3>Encode transitions</h3>-->
+<!--                <p>-->
+<!--                  Encode semantic state and proprioception, then extract transition embeddings from past state-action history.-->
+<!--                </p>-->
+<!--              </article>-->
+<!--              <article class="step-card">-->
+<!--                <span class="step-index">Step 2</span>-->
+<!--                <h3>Fuse dynamics across modalities</h3>-->
+<!--                <p>-->
+<!--                  Use asymmetric cross-attention to turn transition embeddings into a shared cross-modal dynamics token.-->
+<!--                </p>-->
+<!--              </article>-->
+<!--              <article class="step-card">-->
+<!--                <span class="step-index">Step 3</span>-->
+<!--                <h3>Predict foresight and act</h3>-->
+<!--                <p>-->
+<!--                  Predict future latent embeddings, modulate them with current observations, and condition a diffusion policy on the resulting foresight.-->
+<!--                </p>-->
+<!--              </article>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
     </section>
@@ -236,52 +233,52 @@
       </div>
     </section>
 
-    <section id="ablations" class="section alt">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Ablations</p>
-          <h2>Why the method works</h2>
-        </div>
+<!--    <section id="ablations" class="section alt">-->
+<!--      <div class="container">-->
+<!--        <div class="section-heading">-->
+<!--          <p class="section-kicker">Ablations</p>-->
+<!--          <h2>Why the method works</h2>-->
+<!--        </div>-->
 
-        <div class="card-grid two">
-          <article class="info-card">
-            <h3>Cross-modal foresight matters</h3>
-            <figure class="paper-figure compact">
-              <img src="assets/img/modality-ablation.svg" alt="Modality contribution ablation" />
-            </figure>
-            <p>
-              Full cross-modal foresight outperforms policy-only and single-modality variants.
-              In particular, semantic foresight remains strong, while proprioceptive foresight alone is insufficient.
-            </p>
-          </article>
+<!--        <div class="card-grid two">-->
+<!--          <article class="info-card">-->
+<!--            <h3>Cross-modal foresight matters</h3>-->
+<!--            <figure class="paper-figure compact">-->
+<!--              <img src="assets/img/modality-ablation.svg" alt="Modality contribution ablation" />-->
+<!--            </figure>-->
+<!--            <p>-->
+<!--              Full cross-modal foresight outperforms policy-only and single-modality variants.-->
+<!--              In particular, semantic foresight remains strong, while proprioceptive foresight alone is insufficient.-->
+<!--            </p>-->
+<!--          </article>-->
 
-          <article class="info-card">
-            <h3>Grounding via reconstruction matters</h3>
-            <figure class="paper-figure compact">
-              <img src="assets/img/reconstruction-ablation.svg" alt="Reconstruction ablation" />
-            </figure>
-            <p>
-              Removing the reconstruction objective drops performance from <strong>94.7%</strong> to
-              <strong>86.1%</strong>, showing that latent foresight must remain grounded in observable states.
-            </p>
-          </article>
-        </div>
+<!--          <article class="info-card">-->
+<!--            <h3>Grounding via reconstruction matters</h3>-->
+<!--            <figure class="paper-figure compact">-->
+<!--              <img src="assets/img/reconstruction-ablation.svg" alt="Reconstruction ablation" />-->
+<!--            </figure>-->
+<!--            <p>-->
+<!--              Removing the reconstruction objective drops performance from <strong>94.7%</strong> to-->
+<!--              <strong>86.1%</strong>, showing that latent foresight must remain grounded in observable states.-->
+<!--            </p>-->
+<!--          </article>-->
+<!--        </div>-->
 
-        <div class="callout">
-          <h3>Recommended narration for the page</h3>
-          <p>
-            A good top-tier project page does not repeat the entire paper. It surfaces one main claim,
-            one architecture figure, two or three result highlights, and only the ablations that directly
-            strengthen the central story.
-          </p>
-        </div>
-      </div>
-    </section>
+<!--        <div class="callout">-->
+<!--          <h3>Recommended narration for the page</h3>-->
+<!--          <p>-->
+<!--            A good top-tier project page does not repeat the entire paper. It surfaces one main claim,-->
+<!--            one architecture figure, two or three result highlights, and only the ablations that directly-->
+<!--            strengthen the central story.-->
+<!--          </p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
 
     <section id="citation" class="section">
       <div class="container narrow">
         <div class="section-heading">
-          <p class="section-kicker">Citation</p>
+          <p class="section-kicker">Citation (TBU)</p>
           <h2>BibTeX</h2>
         </div>
 
@@ -290,7 +287,6 @@
   title  = {CLaD: Planning with Grounded Foresight via Cross-Modal Latent Dynamics},
   author = {Jeong, Andrew and Kim, Jaemin and Lee, Sebin and Yoon, Sung-Eui},
   year   = {2026},
-  note   = {Replace with the final camera-ready BibTeX entry}
 }</pre>
           <button id="copyBibtex" class="button">Copy BibTeX</button>
         </div>
@@ -298,12 +294,12 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <p>Built as a lightweight static site for GitHub Pages.</p>
-      <p class="muted">Replace placeholder links, author URLs, and figure exports before publishing.</p>
-    </div>
-  </footer>
+<!--  <footer class="site-footer">-->
+<!--    <div class="container footer-wrap">-->
+<!--      <p>Built as a lightweight static site for GitHub Pages.</p>-->
+<!--      <p class="muted">Replace placeholder links, author URLs, and figure exports before publishing.</p>-->
+<!--    </div>-->
+<!--  </footer>-->
 
   <script src="assets/js/main.js"></script>
 </body>
