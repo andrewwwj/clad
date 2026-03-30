@@ -126,19 +126,19 @@
 
         <div class="card-grid three">
           <article class="step-card">
-            <span class="step-index" style="font-size: 1.1rem; font-weight: 700;">Cross-modal Latent Dynamics</span>
+            <span class="step-index" style="font-size: 1.05rem; font-weight: 700;">Cross-modal Latent Dynamics</span>
             <p>
               Rather than aligning static states across modalities, CLaD learns how proprioceptive and semantic transitions co-evolve under actions via asymmetric cross-attention, capturing their shared dynamic context.
             </p>
           </article>
           <article class="step-card">
-            <span class="step-index" style="font-size: 1.1rem; font-weight: 700;">Grounded Latent Foresight</span>
+            <span class="step-index" style="font-size: 1.05rem; font-weight: 700;">Grounded Latent Foresight</span>
             <p>
               From the learned cross-modal dynamics, lightweight MLPs predict future latent states supervised by EMA target encoders, while auxiliary reconstruction losses ground these foresights to observable quantities and prevent representation collapse.
             </p>
           </article>
           <article class="step-card">
-            <span class="step-index" style="font-size: 1.1rem; font-weight: 700;">Foresight-Conditioned Diffusion Policy</span>
+            <span class="step-index" style="font-size: 1.05rem; font-weight: 700;">Foresight-Conditioned Diffusion Policy</span>
             <p>
               Predicted latent foresights are modulated with current observations via FiLM layers and condition a diffusion policy for action generation, serving as implicit subgoals without the overhead of explicit semantic artifact generation.
             </p>
