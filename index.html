@@ -51,9 +51,15 @@
           <a class="button" href="#citation">BibTeX</a>
         </div>
 
-        <p class="hero-summary">
-          Robotic manipulation involves kinematic and semantic transitions that are inherently coupled via underlying actions. However, existing approaches plan within either semantic or latent space without explicitly aligning these cross-modal transitions. To address this, we propose CLaD, a framework that models how proprioceptive and semantic states jointly evolve under actions through asymmetric cross-attention that allows kinematic transitions to query semantic ones. CLaD predicts grounded latent foresights via self-supervised objectives with EMA target encoders and auxiliary reconstruction losses, preventing representation collapse while anchoring predictions to observable states. Predicted foresights are modulated with observations to condition a diffusion policy for action generation. On LIBERO-LONG benchmark, CLaD achieves 94.7% success rate, competitive with large VLAs with significantly fewer parameters.
-        </p>
+        <figure class="hero-figure">
+          <img src="assets/img/CLaD_abstract.png" alt="CLaD teaser overview" />
+          <figcaption>
+            Overview of CLaD. (a) Conventional approaches either generate semantic artifacts (e.g., subgoal images or texts), or plan in unimodal latent spaces that lack cross-modal understanding. (b) CLaD learns cross-modal latent dynamics to predict grounded latent foresights, which condition a diffusion policy for action generation. CLaD achieves 94.7% with only 0.66B parameters, competitive with OpenVLA (7B) and π<sub>0.5</sub> (3.3B).
+          </figcaption>
+        </figure>
+<!--        <p class="hero-summary">-->
+<!--          Robotic manipulation involves kinematic and semantic transitions that are inherently coupled via underlying actions. However, existing approaches plan within either semantic or latent space without explicitly aligning these cross-modal transitions. To address this, we propose CLaD, a framework that models how proprioceptive and semantic states jointly evolve under actions through asymmetric cross-attention that allows kinematic transitions to query semantic ones. CLaD predicts grounded latent foresights via self-supervised objectives with EMA target encoders and auxiliary reconstruction losses, preventing representation collapse while anchoring predictions to observable states. Predicted foresights are modulated with observations to condition a diffusion policy for action generation. On LIBERO-LONG benchmark, CLaD achieves 94.7% success rate, competitive with large VLAs with significantly fewer parameters.-->
+<!--        </p>-->
 
 <!--        <div class="metrics-grid">-->
 <!--          <article class="metric-card">-->
@@ -73,13 +79,6 @@
 <!--            <div class="metric-label">Runtime memory</div>-->
 <!--          </article>-->
 <!--        </div>-->
-
-        <figure class="hero-figure">
-          <img src="assets/img/CLaD_abstract.png" alt="CLaD teaser overview" />
-          <figcaption>
-            Overview of CLaD. (a) Conventional approaches either generate semantic artifacts (e.g., subgoal images or texts), or plan in unimodal latent spaces that lack cross-modal understanding. (b) CLaD learns cross-modal latent dynamics to predict grounded latent foresights, which condition a diffusion policy for action generation. CLaD achieves 94.7% with only 0.66B parameters, competitive with OpenVLA (7B) and π<sub>0.5</sub> (3.3B).
-          </figcaption>
-        </figure>
       </div>
     </section>
 
@@ -89,6 +88,7 @@
           <p class="section-kicker">Overview</p>
           <h2>Core Contributions</h2>
         </div>
+
 
 <!--        <div class="content narrow">-->
 <!--          <p>-->
