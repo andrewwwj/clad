@@ -101,19 +101,19 @@
 
         <div class="card-grid three">
           <article class="info-card">
-            <h3>1. Cross-Modal Latent Dynamics</h3>
+            <h3>Cross-Modal Latent Dynamics</h3>
             <p>
               We propose a cross-modal dynamics model that learns how proprioceptive and semantic transitions jointly evolve under actions via asymmetric cross-attention, interpreting a semantic transition through a proprioceptive transition cue.
             </p>
           </article>
           <article class="info-card">
-            <h3>2. Grounded Latent Foresight</h3>
+            <h3>Grounded Latent Foresight</h3>
             <p>
               We introduce a two-stage training framework that predicts compact future latent states from the shared cross-modal dynamics, which are grounded to observable quantities, enabling them to serve as subgoals for diffusion-based control.
             </p>
           </article>
           <article class="info-card">
-            <h3>3. Parameter-Efficient Planning</h3>
+            <h3>Parameter-Efficient Planning</h3>
             <p>
               CLaD achieves competitive performance to OpenVLA (7B) and π0.5 (3.3B) on LIBERO-LONG with significantly fewer parameters (0.66B), demonstrating that grounded latent foresight enables efficient and scalable robot planning within a compact latent space.
             </p>
@@ -138,27 +138,21 @@
           </figcaption>
         </figure>
 
-        <div class="stack">
-          <article class="step-card">
+        <div class="method-steps">
+          <div class="method-step">
             <span class="step-index">Cross-modal Latent Dynamics</span>
-            <p>
-              Rather than aligning static states across modalities, CLaD learns how proprioceptive and semantic transitions co-evolve under actions via asymmetric cross-attention, capturing their shared dynamic context.
-            </p>
-          </article>
-          <article class="step-card">
+            <p>Rather than aligning static states across modalities, CLaD learns how proprioceptive and semantic transitions co-evolve under actions via asymmetric cross-attention, capturing their shared dynamic context.</p>
+          </div>
+          <div class="method-step">
             <span class="step-index">Learning Grounded Latent Foresight</span>
-            <p>
-              From the learned cross-modal dynamics, lightweight MLPs predict future latent states supervised by EMA target encoders, while auxiliary reconstruction losses ground these foresights to observable quantities and prevent representation collapse.
-            </p>
-          </article>
-          <article class="step-card">
+            <p>From the learned cross-modal dynamics, lightweight MLPs predict future latent states supervised by EMA target encoders, while auxiliary reconstruction losses ground these foresights to observable quantities and prevent representation collapse.</p>
+          </div>
+          <div class="method-step">
             <span class="step-index">Diffusion Policy Guided by Latent Foresight</span>
-            <p>
-              Predicted latent foresights are modulated with current observations via FiLM layers and condition a diffusion policy for action generation, serving as implicit subgoals without the overhead of explicit semantic artifact generation.
-            </p>
-          </article>
+            <p>Predicted latent foresights are modulated with current observations via FiLM layers and condition a diffusion policy for action generation, serving as implicit subgoals without the overhead of explicit semantic artifact generation.</p>
+          </div>
         </div>
-      </div>
+        </div>
     </section>
 
     <section id="results" class="section">
@@ -168,9 +162,9 @@
           <h2>Efficient, while Effective Planning of CLaD</h2>
         </div>
 
-        <div class="stack">
-          <article class="result-card emphasis">
-            <h3 style="color: var(--accent);">Best performance among baselines</h3>
+        <div class="method-steps" style="grid-template-columns:1fr">
+          <div class="method-step">
+            <span class="step-index" style="font-size: 1.2rem;">Performance on long-horizon planning</span>
             <p>
               CLaD reaches the best average success rate on LIBERO-LONG (<strong>94.7%, 0.66B</strong>), compared to large VLAs, such as
               OpenVLA (<strong>93.8%, 7B</strong>) and π<sub>0.5</sub> (<strong>93.2%, 3.3B</strong>) with much fewer parameters.
@@ -178,13 +172,13 @@
             <figure class="paper-figure">
               <img src="assets/img/CLaD_results.png" alt="Benchmark comparison chart" />
               <figcaption>
-                Performance comparison on LIBERO-LONG benchmark. CLaD achieves competitive performance with significantly fewer parameters (0.66B) compared to baselines. LIBERO-LONG tasks include: (1) put soup and sauce in basket; (2) put box and butter in basket; (3) turn on stove and put pot; (4) put bowl in drawer and close it; (5) put mugs on left and right plates; (6) pick book and place it in back; (7) put mug on plate and put pudding to right; (8) put soup and box in basket; (9) put both pots on stove; (10) put mug in microwave and close it.
+                Performance comparison on LIBERO-LONG benchmark.
               </figcaption>
             </figure>
-          </article>
+          </div>
 
-          <article class="result-card emphasis">
-            <h3 style="color: var(--accent);">Computational efficiency</h3>
+          <div class="method-step">
+            <span class="step-index" style="font-size: 1.2rem;">Computational efficiency</span>
             <p>
               CLaD runs at <strong>25 Hz</strong> with only <strong>4 GB</strong> memory,
               versus OpenVLA at 6 Hz / 15 GB and π<sub>0.5</sub> at 10 Hz / 19 GB.
@@ -262,7 +256,7 @@
                 </table>
               </div>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
@@ -310,7 +304,7 @@
 <!--    </section>-->
 
     <section id="citation" class="section">
-      <div class="container narrow">
+      <div class="container">
         <div class="section-heading">
           <p class="section-kicker">Citation (TBU)</p>
           <h2>BibTeX</h2>
