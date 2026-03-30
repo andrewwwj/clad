@@ -1,4 +1,4 @@
-# CLaD GitHub Pages Starter
+# CLaD GitHub Page
 
 A lightweight static project page for **CLaD: Planning with Grounded Foresight via Cross-Modal Latent Dynamics**.
 
