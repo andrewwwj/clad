@@ -132,13 +132,13 @@
             </p>
           </article>
           <article class="step-card">
-            <span class="step-index" style="font-size: 1.05rem; font-weight: 700;">Grounded Latent Foresight</span>
+            <span class="step-index" style="font-size: 1.05rem; font-weight: 700;">Learning Grounded Latent Foresight</span>
             <p>
               From the learned cross-modal dynamics, lightweight MLPs predict future latent states supervised by EMA target encoders, while auxiliary reconstruction losses ground these foresights to observable quantities and prevent representation collapse.
             </p>
           </article>
           <article class="step-card">
-            <span class="step-index" style="font-size: 1.05rem; font-weight: 700;">Foresight-Conditioned Diffusion Policy</span>
+            <span class="step-index" style="font-size: 1.05rem; font-weight: 700;">Diffusion Policy Guided by Latent Foresight</span>
             <p>
               Predicted latent foresights are modulated with current observations via FiLM layers and condition a diffusion policy for action generation, serving as implicit subgoals without the overhead of explicit semantic artifact generation.
             </p>
@@ -154,104 +154,101 @@
           <h2>Efficient, while Effective Planning of CLaD</h2>
         </div>
 
-        <div class="two-col">
-          <div>
-            <div class="stack">
-              <article class="result-card emphasis">
-                <h3>Best performance among baselines</h3>
-                <p>
-                  CLaD reaches the best average success rate on LIBERO-LONG (<strong>94.7%, 0.66B</strong>), compared to large VLAs, such as
-                  OpenVLA (<strong>93.8%, 7B</strong>) and π<sub>0.5</sub> (<strong>93.2%, 3.3B</strong>) with much fewer parameters .
-                </p>
-              </article>
-              <figure class="paper-figure">
-                <img src="assets/img/CLaD_results.png" alt="Benchmark comparison chart" />
-                <figcaption>
-                  Performance comparison on LIBERO-LONG benchmark. CLaD achieves competitive performance with significantly fewer parameters (0.66B) compared to baselines. LIBERO-LONG tasks include: (1) put soup and sauce in basket; (2) put box and butter in basket; (3) turn on stove and put pot; (4) put bowl in drawer and close it; (5) put mugs on left and right plates; (6) pick book and place it in back; (7) put mug on plate and put pudding to right; (8) put soup and box in basket; (9) put both pots on stove; (10) put mug in microwave and close it.
-                </figcaption>
-              </figure>
-              <article class="result-card emphasis">
-                <h3>Computational efficiency</h3>
-                <p>
-                  CLaD runs at <strong>25 Hz</strong> with only <strong>4 GB</strong> memory,
-                  versus OpenVLA at 6 Hz / 15 GB and π<sub>0.5</sub> at 10 Hz / 19 GB.
-                  Among latent planning methods, CLaD achieves <strong>94.7%</strong> success rate
-                  with a planning latency of just <strong>0.012 s</strong>, outperforming
-                  UVA (90.0%) and LBP (88.6%) while maintaining real-time deployment capability.
-                </p>
-              </article>
+        <div class="stack">
+          <article class="result-card emphasis">
+            <h3 style="color: var(--accent);">Best performance among baselines</h3>
+            <p>
+              CLaD reaches the best average success rate on LIBERO-LONG (<strong>94.7%, 0.66B</strong>), compared to large VLAs, such as
+              OpenVLA (<strong>93.8%, 7B</strong>) and π<sub>0.5</sub> (<strong>93.2%, 3.3B</strong>) with much fewer parameters.
+            </p>
+            <figure class="paper-figure">
+              <img src="assets/img/CLaD_results.png" alt="Benchmark comparison chart" />
+              <figcaption>
+                Performance comparison on LIBERO-LONG benchmark. CLaD achieves competitive performance with significantly fewer parameters (0.66B) compared to baselines. LIBERO-LONG tasks include: (1) put soup and sauce in basket; (2) put box and butter in basket; (3) turn on stove and put pot; (4) put bowl in drawer and close it; (5) put mugs on left and right plates; (6) pick book and place it in back; (7) put mug on plate and put pudding to right; (8) put soup and box in basket; (9) put both pots on stove; (10) put mug in microwave and close it.
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="result-card emphasis">
+            <h3 style="color: var(--accent);">Computational efficiency</h3>
+            <p>
+              CLaD runs at <strong>25 Hz</strong> with only <strong>4 GB</strong> memory,
+              versus OpenVLA at 6 Hz / 15 GB and π<sub>0.5</sub> at 10 Hz / 19 GB.
+              Among latent planning methods, CLaD achieves <strong>94.7%</strong> success rate
+              with a planning latency of just <strong>0.012 s</strong>, outperforming
+              UVA (90.0%) and LBP (88.6%) while maintaining real-time deployment capability.
+            </p>
+            <div class="card-grid two">
+              <div class="comparison-table-wrap">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Method</th>
+                      <th>Avg. SR (%)</th>
+                      <th>Params (B)</th>
+                      <th>Inference (Hz)</th>
+                      <th>Memory (GB)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>OpenVLA</td>
+                      <td>93.8</td>
+                      <td>7.0</td>
+                      <td>6</td>
+                      <td>15</td>
+                    </tr>
+                    <tr>
+                      <td>π<sub>0.5</sub></td>
+                      <td>93.2</td>
+                      <td>3.3</td>
+                      <td>10</td>
+                      <td>19</td>
+                    </tr>
+                    <tr class="highlight-row">
+                      <td>CLaD</td>
+                      <td>94.7</td>
+                      <td>0.66</td>
+                      <td>25</td>
+                      <td>4</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="comparison-table-wrap">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Method</th>
+                      <th>Params (B)</th>
+                      <th>Planning Time (s)</th>
+                      <th>Avg. SR (%)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>UVA</td>
+                      <td>0.5</td>
+                      <td>0.195</td>
+                      <td>90.0</td>
+                    </tr>
+                    <tr>
+                      <td>LBP</td>
+                      <td>0.19</td>
+                      <td>0.008</td>
+                      <td>88.6</td>
+                    </tr>
+                    <tr class="highlight-row">
+                      <td>CLaD</td>
+                      <td>0.66</td>
+                      <td>0.012</td>
+                      <td>94.7</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="comparison-table-wrap">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Method</th>
-                <th>Avg. SR (%)</th>
-                <th>Params (B)</th>
-                <th>Inference (Hz)</th>
-                <th>Memory (GB)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>OpenVLA</td>
-                <td>93.8</td>
-                <td>7.0</td>
-                <td>6</td>
-                <td>15</td>
-              </tr>
-              <tr>
-                <td>π<sub>0.5</sub></td>
-                <td>93.2</td>
-                <td>3.3</td>
-                <td>10</td>
-                <td>19</td>
-              </tr>
-              <tr class="highlight-row">
-                <td>CLaD</td>
-                <td>94.7</td>
-                <td>0.66</td>
-                <td>25</td>
-                <td>4</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="comparison-table-wrap">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Method</th>
-                <th>Params (B)</th>
-                <th>Planning Time (s)</th>
-                <th>Avg. SR (%)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>UVA</td>
-                <td>0.5</td>
-                <td>0.195</td>
-                <td>90.0</td>
-              </tr>
-              <tr>
-                <td>LBP</td>
-                <td>0.19</td>
-                <td>0.008</td>
-                <td>88.6</td>
-              </tr>
-              <tr class="highlight-row">
-                <td>CLaD</td>
-                <td>0.66</td>
-                <td>0.012</td>
-                <td>94.7</td>
-              </tr>
-            </tbody>
-          </table>
+          </article>
         </div>
       </div>
     </section>

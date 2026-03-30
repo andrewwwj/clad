@@ -254,6 +254,8 @@ h3{
   background:rgba(47,111,237,.06);
   font-weight:800;
 }
+.result-card .card-grid{margin-top:16px}
+.result-card .comparison-table-wrap{margin-top:0}
 .paper-figure.compact{
   margin:8px 0 14px;
 }
