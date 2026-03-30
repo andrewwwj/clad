@@ -241,8 +241,8 @@ h3{
   border-radius:999px;
   background:rgba(47,111,237,.08);
   color:var(--accent);
-  font-size:.8rem;
-  font-weight:800;
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 .two-col{
   display:grid;
