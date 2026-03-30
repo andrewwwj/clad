@@ -112,41 +112,43 @@
       <div class="container">
         <div class="section-heading">
           <p class="section-kicker">Method</p>
-          <h2>Two-stage architecture</h2>
+          <h2>Planning with Cross-Modal Latent Dynamics</h2>
         </div>
 
         <div class="two-col">
           <div>
-            <figure class="paper-figure">
+            <figure class="hero-figure">
               <img src="assets/img/CLaD_method.png" alt="CLaD method architecture" />
-              <figcaption>1) Learn cross-modal latent dynamics and grounded foresight 2) Train a foresight-conditioned diffusion policy.</figcaption>
+              <figcaption>
+                Stage 1 - Semantic and proprioceptive state are encoded and fed into modality-specific cross-attention modules to extract transition representations. Asymmetric cross-attention, where proprioceptive transitions query semantic ones, yields shared dynamics from which lightweight MLPs predict future latent foresights. These predictions are supervised via EMA target encoders using actual future states, with auxiliary reconstruction decoders maintaining correspondence with observable quantities and preventing representation collapse.
+                <br>
+                Stage 2 - Predicted latent foresights are adaptively modulated with current observations via FiLM layers, and the resulting representation conditions a diffusion policy to generate action sequences.</figcaption>
             </figure>
           </div>
-<!--          <div class="sticky-col">-->
-<!--            <div class="stack">-->
-<!--              <article class="step-card">-->
-<!--                <span class="step-index">Step 1</span>-->
-<!--                <h3>Encode transitions</h3>-->
-<!--                <p>-->
-<!--                  Encode semantic state and proprioception, then extract transition embeddings from past state-action history.-->
-<!--                </p>-->
-<!--              </article>-->
-<!--              <article class="step-card">-->
-<!--                <span class="step-index">Step 2</span>-->
-<!--                <h3>Fuse dynamics across modalities</h3>-->
-<!--                <p>-->
-<!--                  Use asymmetric cross-attention to turn transition embeddings into a shared cross-modal dynamics token.-->
-<!--                </p>-->
-<!--              </article>-->
-<!--              <article class="step-card">-->
-<!--                <span class="step-index">Step 3</span>-->
-<!--                <h3>Predict foresight and act</h3>-->
-<!--                <p>-->
-<!--                  Predict future latent embeddings, modulate them with current observations, and condition a diffusion policy on the resulting foresight.-->
-<!--                </p>-->
-<!--              </article>-->
-<!--            </div>-->
-<!--          </div>-->
+          <div class="sticky-col">
+            <div class="stack">
+              <article class="step-card">
+                <span class="step-index" style="font-size: 1.1rem; font-weight: 700;">Cross-modal Latent Dynamics</span>
+<!--                <h3>Cross-modal Latent Dynamics</h3>-->
+                <p>
+                  Rather than aligning static states across modalities, CLaD learns how proprioceptive and semantic transitions co-evolve under actions via asymmetric cross-attention, capturing their shared dynamic context.
+                </p>
+              </article>
+              <article class="step-card">
+                <span class="step-index" style="font-size: 1.1rem; font-weight: 700;">Grounded Latent Foresight</span>
+<!--                <h3>Grounded Latent Foresight</h3>-->
+                <p>
+                  From the learned cross-modal dynamics, lightweight MLPs predict future latent states supervised by EMA target encoders, while auxiliary reconstruction losses ground these foresights to observable quantities and prevent representation collapse.
+                </p>
+              </article>
+              <article class="step-card">
+                <span class="step-index" style="font-size: 1.1rem; font-weight: 700;">Foresight-Conditioned Diffusion Policy</span>
+                <p>
+                  Predicted latent foresights are modulated with current observations via FiLM layers and condition a diffusion policy for action generation, serving as implicit subgoals without the overhead of explicit semantic artifact generation.
+                </p>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -155,39 +157,33 @@
       <div class="container">
         <div class="section-heading">
           <p class="section-kicker">Results</p>
-          <h2>Main quantitative takeaways</h2>
+          <h2>Efficient, while Effective Planning of CLaD</h2>
         </div>
 
         <div class="two-col">
           <div>
-            <figure class="paper-figure">
-              <img src="assets/img/benchmark-comparison.svg" alt="Benchmark comparison chart" />
-              <figcaption>
-                Average success rate on LIBERO-LONG compared with representative baselines.
-              </figcaption>
-            </figure>
-          </div>
-          <div>
             <div class="stack">
               <article class="result-card emphasis">
-                <h3>Best average success rate</h3>
+                <h3>Best performance among baselines</h3>
                 <p>
-                  CLaD reaches <strong>94.7%</strong> on LIBERO-LONG, outperforming
-                  OpenVLA (<strong>93.8%</strong>) and π0.5 (<strong>93.2%</strong>) while using many fewer parameters.
+                  CLaD reaches the best average success rate on LIBERO-LONG (<strong>94.7%, 0.66B</strong>), compared to large VLAs, such as
+                  OpenVLA (<strong>93.8%, 7B</strong>) and π<sub>0.5</sub> (<strong>93.2%, 3.3B</strong>) with much fewer parameters .
                 </p>
               </article>
-              <article class="result-card">
-                <h3>Efficient at runtime</h3>
+              <figure class="paper-figure">
+                <img src="assets/img/CLaD_results.png" alt="Benchmark comparison chart" />
+                <figcaption>
+                  Performance comparison on LIBERO-LONG benchmark. CLaD achieves competitive performance with significantly fewer parameters (0.66B) compared to baselines. LIBERO-LONG tasks include: (1) put soup and sauce in basket; (2) put box and butter in basket; (3) turn on stove and put pot; (4) put bowl in drawer and close it; (5) put mugs on left and right plates; (6) pick book and place it in back; (7) put mug on plate and put pudding to right; (8) put soup and box in basket; (9) put both pots on stove; (10) put mug in microwave and close it.
+                </figcaption>
+              </figure>
+              <article class="result-card emphasis">
+                <h3>Computational efficiency</h3>
                 <p>
-                  The paper reports <strong>25 Hz</strong> inference and <strong>4 GB</strong> memory,
-                  versus OpenVLA at 6 Hz / 15 GB and π0.5 at 10 Hz / 19 GB.
-                </p>
-              </article>
-              <article class="result-card">
-                <h3>Compact model size</h3>
-                <p>
-                  Total parameter count is <strong>0.66B</strong>, compared with <strong>7B</strong> for OpenVLA
-                  and <strong>3.3B</strong> for π0.5.
+                  CLaD runs at <strong>25 Hz</strong> with only <strong>4 GB</strong> memory,
+                  versus OpenVLA at 6 Hz / 15 GB and π<sub>0.5</sub> at 10 Hz / 19 GB.
+                  Among latent planning methods, CLaD achieves <strong>94.7%</strong> success rate
+                  with a planning latency of just <strong>0.012 s</strong>, outperforming
+                  UVA (90.0%) and LBP (88.6%) while maintaining real-time deployment capability.
                 </p>
               </article>
             </div>
@@ -214,7 +210,7 @@
                 <td>15</td>
               </tr>
               <tr>
-                <td>π0.5</td>
+                <td>π<sub>0.5</sub></td>
                 <td>93.2</td>
                 <td>3.3</td>
                 <td>10</td>
@@ -226,6 +222,39 @@
                 <td>0.66</td>
                 <td>25</td>
                 <td>4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Params (B)</th>
+                <th>Planning Time (s)</th>
+                <th>Avg. SR (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>UVA</td>
+                <td>0.5</td>
+                <td>0.195</td>
+                <td>90.0</td>
+              </tr>
+              <tr>
+                <td>LBP</td>
+                <td>0.19</td>
+                <td>0.008</td>
+                <td>88.6</td>
+              </tr>
+              <tr class="highlight-row">
+                <td>CLaD</td>
+                <td>0.66</td>
+                <td>0.012</td>
+                <td>94.7</td>
               </tr>
             </tbody>
           </table>
